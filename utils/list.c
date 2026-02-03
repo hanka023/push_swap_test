@@ -3,7 +3,7 @@
 t_list *str_to_lst(int argc, char **argv)
 {
 	int i;
-	int n;
+	long int n;
 	t_list *lst;
 	t_list *lst1;
 
@@ -14,12 +14,12 @@ t_list *str_to_lst(int argc, char **argv)
 	while(i < argc)
 	{
 		n = ft_atoi_checked(argv[i]);
-		if (n == -1)
-			{
+		if (n == -2147483649)
+		{
 				printf("Error\n");
 				return (0);
-			}
-		lst1 = new_list(n);
+		}
+		lst1 = new_list((int)n);
 		add_back(&lst, lst1);
 		++i;
 	}

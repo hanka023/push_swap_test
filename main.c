@@ -30,6 +30,8 @@ int main(int argc, char **argv)
 	if (!check(argc, argv))
 		return (0);
 	lst = str_to_lst(argc, argv);
+	if(!lst)
+		return(0);
 	if(!check_duplicates_lst(lst))
 		return(0);
 	if (!lst)

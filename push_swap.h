@@ -44,7 +44,12 @@ void	tiny_sort(t_list **a, t_list **b, int size);
 int		ft_strcmp(const char *s1, const char *s2);
 int		check_duplicates(int ac, char **av);
 int		check_duplicates_lst(t_list *lst);
-int		ft_atoi_checked(const char *str);
+
+//********	utils - atoi	********//
+long int	ft_atoi_checked(const char *str);
+int			ft_atoi(const char *str);
+
+
 int		ft_is_char_nbr(char *str);
 int		ft_isnbr(int ac, char **av);
 

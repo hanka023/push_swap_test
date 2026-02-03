@@ -1,7 +1,7 @@
 
 #include "../push_swap.h"
 
-int	ft_atoi_checked(const char *str)
+long int	ft_atoi_checked(const char *str)
 {
 	int			i;
 	int			sign;
@@ -25,6 +25,6 @@ int	ft_atoi_checked(const char *str)
 	}
 	result = (result * sign);
 	if (result > 2147483647 || result < (-2147483648))
-		return -1;
+		return (-2147483649);
 	return (result);
 }

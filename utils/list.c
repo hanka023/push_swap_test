@@ -1,34 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
+/*   Updated: 2026/02/03 17:10:06 by haskalov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-t_list *str_to_lst(int argc, char **argv)
+t_list	*str_to_lst(int argc, char **argv)
 {
-	int i;
-	long int n;
-	t_list *lst;
-	t_list *lst1;
+	int			i;
+	long int	n;
+	t_list		*lst;
+	t_list		*lst1;
 
 	i = 1;
 	n = 0;
 	lst = NULL;
 	lst1 = NULL;
-	while(i < argc)
+	while (i < argc)
 	{
 		n = ft_atoi_checked(argv[i]);
 		if (n == -2147483649)
 		{
-				printf("Error\n");
-				return (0);
+			printf("Error\n");
+			return (0);
 		}
 		lst1 = new_list((int)n);
 		add_back(&lst, lst1);
 		++i;
 	}
-	return(lst);
+	return (lst);
 }
 
-t_list *new_list(int value)
+t_list	*new_list(int value)
 {
-	t_list *lst;
+	t_list	*lst;
+
 	lst = malloc (sizeof (t_list));
 	if (!lst)
 		return (NULL);
@@ -40,14 +53,14 @@ t_list *new_list(int value)
 
 void	add_back(t_list **head, t_list *new)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!head || !new)
-		return;
+		return ;
 	if (*head == NULL)
 	{
 		*head = new;
-		return;
+		return ;
 	}
 	tmp = *head;
 	while (tmp->next != NULL)
@@ -55,25 +68,25 @@ void	add_back(t_list **head, t_list *new)
 	tmp->next = new;
 }
 
-void print_list(t_list *begin_list)
+void	print_list(t_list *begin_list)
 {
-	t_list *print;
+	t_list	*print;
 
- 	print = begin_list;
-    while (print != NULL)
-    {
-       ft_printf("%d \n",print -> value);
-	   print = print -> next;
-    }
+	print = begin_list;
+	while (print != NULL)
+	{
+		ft_printf("%d \n", print -> value);
+		print = print -> next;
+	}
 }
 
-void free_list(t_list *lst)
+void	free_list(t_list *lst)
 {
-	t_list *free_list;
+	t_list	*free_list;
 
 	while (lst != NULL)
 	{
-		free_list = (lst) -> next;
+		free_list = (lst)-> next;
 		free(lst);
 		lst = free_list;
 	}

@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   mini_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 14:30:30 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/05 19:21:34 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "../push_swap.h"
 
-int	ft_printstr(char *s)
+void	mini_sort(t_list **a, t_list **b, int size)
 {
-	int	i;
+	int	min_pos;
+	int len;
 
-	i = 0;
-	if (!s)
-		s = "(null)";
-	while (*s)
-	{
-		ft_putchar(*s);
-		s++;
-		i++;
-	}
-	return (i);
+	(void)size;
+	(void)b;
+	len = list_size(a);
+	ft_printf("delka listu %d\n",len);
+	min_pos = min_position(a);
 }
+
+int list_size(t_list **lst)
+{
+	int size;
+	t_list *lst1;
+
+	lst1 = *lst;
+	size = 0;
+	while (lst1)
+	{
+		lst1 = (lst1) -> next;
+		++size;
+	}
+	return (size);
+}
+

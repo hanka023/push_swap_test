@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/03 17:10:06 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/05 16:35:17 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_list	*str_to_lst(int argc, char **argv)
 		n = ft_atoi_checked(argv[i]);
 		if (n == -2147483649)
 		{
-			printf("Error\n");
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		lst1 = new_list((int)n);

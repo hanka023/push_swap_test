@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 14:15:44 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/05 20:18:12 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	rra(t_list **a)
 	prev -> next = NULL;
 	last -> next = *a;
 	*a = last;
-	ft_printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_list **b)

@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/09 15:58:31 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:15:39 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,71 +33,60 @@ void		rra(t_list **a);
 void		rrb(t_list **b);
 void		rrr(t_list **a, t_list **b);
 
-//********	sort	********//
+//********	sort - sort	********//
+
+void		sort(t_list **a, int size);
+
+//********	sort - radix sort	********//
 
 int			count_index(t_list *lst);
 void		get_index(t_list *lst);
 int			max_index(t_list *lst);
-void		add_back(t_list **head, t_list *new);
 void		radix_sort(t_list **a, t_list **b, int size);
-void		mini_sort(t_list **a, t_list **b, int size);
 
-//********	tiny_sort	********//
+//********	sort - tiny_sort	********//
 
-void		tiny_sort(t_list **a, t_list **b, int size);
-void		switch_list(t_list **lst);
+int			min_position(t_list **a);
 void		three_sort(t_list **lst);
 void		four_sort(t_list **a, t_list **b);
-int			min_position(t_list **a);
-void		sort(t_list **a,  int size);
+void		five_sort(t_list **a, t_list **b);
+void		tiny_sort(t_list **a, t_list **b, int size);
 
-//********	mini_sort	********//
-
-void		mini_sort(t_list **a, t_list **b, int size);
-int			list_size(t_list **lst);
-
-//********	utils	********//
+//********	utils - check duplicates	********//
 
 int			ft_strcmp(const char *s1, const char *s2);
 int			check_duplicates(int ac, char **av);
 int			check_duplicates_lst(t_list *lst);
 
-//********	ft_split	********//
-
-// 
-// static int	copy_word(char **result, int i, const char *s, char c);
-// static void	free_split(char **result, int count);
-// static int	world_len(const char *s, char c);
-// static int	count_words(const char *s, char c);
-int			count_words(char *s);
-
-char		**ft_split_ws(char *ag);
-//int			check(int argc, char **argv);
-t_list		*av_to_lst(char **av);
-void		free_split(char **split);
-
 //********	utils - atoi	********//
 
 long int	ft_atoi_checked(const char *str);
-int			ft_atoi(const char *str);
+
+//********	utils - isnbr	********//
+
 int			ft_is_char_nbr(char *str);
 int			ft_isnbr(char *str);
 
+//********	utils - ft_split	********//
+
+int			count_words(char *s);
+int			world_len(const char *s);
+void		free_split(char **split);
+int			copy_word(char **result, int i, const char *s);
+char		**ft_split_ws(char *ag);
+
 //********	utils - list	********//
 
-//t_list		*str_to_lst(t_list **lst, char *str);
-
-int		str_to_lst(t_list **lst, char *str);
+int			str_to_lst(t_list **lst, char *str);
 t_list		*new_list(int value);
+void		add_back(t_list **head, t_list *new);
 void		print_list(t_list *begin_list);
 void		free_list(t_list *lst);
 
-
 //********	main	********//
 
-void		error_exit();
+int			split_to_lst(t_list **lst, char *jeden_split, char **split);
+t_list		*av_to_lst(char **av);
 int			main(int argc, char **argv);
-
-
 
 #endif

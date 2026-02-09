@@ -6,11 +6,35 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/09 15:45:45 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:07:47 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	min_position(t_list **a)
+{
+	t_list	*lst;
+	int		pos;
+	int		min_pos;
+	int		min_val;
+
+	lst = *a;
+	pos = 0;
+	min_pos = 0;
+	min_val = lst -> index;
+	while (lst)
+	{
+		if (lst -> index < min_val)
+		{
+			min_val = lst -> index;
+			min_pos = pos;
+		}
+		lst = lst -> next;
+		pos++;
+	}
+	return (min_pos);
+}
 
 void	three_sort(t_list **lst)
 {
@@ -38,30 +62,6 @@ void	three_sort(t_list **lst)
 		if (((*lst)-> value) > ((*lst)-> next -> value))
 			sa(lst);
 	}
-}
-
-int	min_position(t_list **a)
-{
-	t_list	*lst;
-	int		pos;
-	int		min_pos;
-	int		min_val;
-
-	lst = *a;
-	pos = 0;
-	min_pos = 0;
-	min_val = lst -> index;
-	while (lst)
-	{
-		if (lst -> index < min_val)
-		{
-			min_val = lst -> index;
-			min_pos = pos;
-		}
-		lst = lst -> next;
-		pos++;
-	}
-	return (min_pos);
 }
 
 void	four_sort(t_list **a, t_list **b)
@@ -110,7 +110,7 @@ void	five_sort(t_list **a, t_list **b)
 void	tiny_sort(t_list **a, t_list **b, int size)
 {
 	if (!a || !*a || size <= 1)
-		return;
+		return ;
 	if (size == 2)
 	{
 		if (((*a)-> index) > ((*a)-> next -> index))

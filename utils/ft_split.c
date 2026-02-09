@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/09 15:35:33 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 19:23:26 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,9 @@ char	**ft_split_ws(char *s)
 	char	**words;
 	int		i;
 
-	if (!s)
-		return (NULL);
 	i = 0;
 	words = (char **)malloc(sizeof(char *) * (count_words(s) + 1));
-	if (!words)
+	if (!s || !words)
 		return (NULL);
 	while (*s)
 	{

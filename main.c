@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/09 16:44:14 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 17:29:34 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,29 @@ t_list	*av_to_lst(char **av)
 	{
 		split = ft_split_ws(av[i]);
 		if(!split)
-			return(0);
+			return(NULL);
 		j = 0;
-		if (!ft_isnbr(*split))
-		{
-			free_split(split);
-			return (0);	
-		}
 		while (split[j])
 		{
+			if (!ft_isnbr(split[j]))
+			{
+				free_split(split);
+				free_list(lst); 
+				return (NULL);	
+			}
 			if (!str_to_lst(&lst, split[j]))
 			{
 				free_split(split);
       			free_list(lst); 
-				return (0); 
+				return (NULL); 
 			}
 			j++;
 		}
 		if (!check_duplicates_lst(lst))
 		{
+			free_split(split);
 			free_list(lst);
-			return (0);
+			return (NULL);
 		}
 		free_split(split);
 		i++;
@@ -64,7 +66,10 @@ int	main(int argc, char **argv)
 	
 	lst = av_to_lst(argv);
 	if (!lst)
+	{
+		free_list(lst);
 		return (0);
+	}
 	get_index(lst);
 	count = count_index(lst);
 	sort(&lst, count);

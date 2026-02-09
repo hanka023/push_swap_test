@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 19:21:34 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/07 18:10:14 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	mini_sort(t_list **a, t_list **b, int size)
 	(void)size;
 	(void)b;
 	len = list_size(a);
-	ft_printf("delka listu %d\n",len);
+	
 	min_pos = min_position(a);
 }
 

@@ -6,36 +6,30 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 16:35:17 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:38:55 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*str_to_lst(int argc, char **argv)
+int	str_to_lst(t_list **lst, char *str)
 {
 	int			i;
 	long int	n;
-	t_list		*lst;
 	t_list		*lst1;
 
 	i = 1;
 	n = 0;
-	lst = NULL;
 	lst1 = NULL;
-	while (i < argc)
+	n = ft_atoi_checked(str);
+	if (n == -2147483649)
 	{
-		n = ft_atoi_checked(argv[i]);
-		if (n == -2147483649)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
-		lst1 = new_list((int)n);
-		add_back(&lst, lst1);
-		++i;
+		write(2, "Error\n", 6);
+		return (0);
 	}
-	return (lst);
+	lst1 = new_list((int)n);
+	add_back(lst, lst1);
+	return (1);
 }
 
 t_list	*new_list(int value)

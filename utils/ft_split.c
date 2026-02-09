@@ -6,49 +6,52 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 18:22:02 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:35:33 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	count_words(const char *s, char c)
+int	count_words(char *s)
 {
 	int	count;
-	int	in_world;
+	int	in_word;
 
 	count = 0;
-	in_world = 0;
 	while (*s)
 	{
-		if (*s != c && in_world == 0)
+		in_word = 0;
+		while (*s && (*s == ' ' || *s == '\n' || *s == '\t'))
+			++s;
+		while ((*s && *s != ' ' && *s != '\t' && *s != '\n'))
 		{
-			in_world = 1;
-			count++;
+			if (in_word == 0)
+				count++;
+			in_word = 1;
+			++s;
 		}
-		else if (*s == c)
-			in_world = 0;
-		s++;
 	}
 	return (count);
 }
 
-static int	world_len(const char *s, char c)
+int	world_len(const char *s)
 {
 	int	len;
 
 	len = 0;
-	while (s[len] != '\0' && s[len] != c)
+	while (s[len] != '\0' && s[len] != ' ' && s[len] != '\t' && s[len] != '\n')
 		++len;
 	return (len);
 }
 
-static void	free_split(char **result, int count)
+void	free_split(char **result)
 {
 	int	i;
 
+	if (!result)
+		return ;
 	i = 0;
-	while (i < count)
+	while (result[i])
 	{
 		free(result[i]);
 		++i;
@@ -56,13 +59,13 @@ static void	free_split(char **result, int count)
 	free(result);
 }
 
-static int	copy_word(char **result, int i, const char *s, char c)
+int	copy_word(char **result, int i, const char *s)
 {
 	int	j;
 	int	len;
 
 	j = 0;
-	len = (world_len(s, c));
+	len = (world_len(s));
 	result[i] = malloc(sizeof(char) * (len + 1));
 	if (!result[i])
 		return (0);
@@ -75,25 +78,27 @@ static int	copy_word(char **result, int i, const char *s, char c)
 	return (1);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_ws(char *s)
 {
 	char	**words;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	words = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!s || !words)
+	words = (char **)malloc(sizeof(char *) * (count_words(s) + 1));
+	if (!words)
 		return (NULL);
 	while (*s)
 	{
-		if (*s != c)
+		if (*s != ' ' && *s != '\n' && *s != '\t')
 		{
-			if (!copy_word(words, i, s, c))
+			if (!copy_word(words, i, s))
 			{
-				free_split(words, i);
+				free_split(words);
 				return (NULL);
 			}
-			s = s + world_len(s, c);
+			s = s + world_len(s);
 			i++;
 		}
 		else

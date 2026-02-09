@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 16:53:48 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:45:45 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	min_position(t_list **a)
 	lst = *a;
 	pos = 0;
 	min_pos = 0;
+	min_val = lst -> index;
 	while (lst)
 	{
 		if (lst -> index < min_val)
@@ -108,10 +109,8 @@ void	five_sort(t_list **a, t_list **b)
 
 void	tiny_sort(t_list **a, t_list **b, int size)
 {
-	(void)b;
-	if ((!a) || (!size))
-		return ;
-	get_index(*a);
+	if (!a || !*a || size <= 1)
+		return;
 	if (size == 2)
 	{
 		if (((*a)-> index) > ((*a)-> next -> index))
@@ -121,8 +120,6 @@ void	tiny_sort(t_list **a, t_list **b, int size)
 		three_sort(a);
 	else if (size == 4)
 		four_sort(a, b);
-	else if (size == 4)
-		four_sort (a, b);
 	else if (size == 5)
 		five_sort(a, b);
 	else

@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 16:34:34 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:55:09 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,12 @@ int	ft_is_char_nbr(char *str)
 	return (isnbr);
 }
 
-int	ft_isnbr(int ac, char **av)
+int	ft_isnbr(char *str)
 {
-	int	i;
-
-	i = 1;
-	while (i < ac)
+	if (!ft_is_char_nbr(str))
 	{
-		if (ft_is_char_nbr(av[i]) == 0)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
-		++i;
+		write(2, "Error\n", 6);
+		return (0);
 	}
 	return (1);
 }

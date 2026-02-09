@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 19:32:33 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:58:31 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		switch_list(t_list **lst);
 void		three_sort(t_list **lst);
 void		four_sort(t_list **a, t_list **b);
 int			min_position(t_list **a);
-void		sort(t_list **a, t_list **b, int size);
+void		sort(t_list **a,  int size);
 
 //********	mini_sort	********//
 
@@ -64,24 +64,40 @@ int			check_duplicates_lst(t_list *lst);
 
 //********	ft_split	********//
 
-// char		**ft_split_ws(char **ag);
+// 
 // static int	copy_word(char **result, int i, const char *s, char c);
 // static void	free_split(char **result, int count);
 // static int	world_len(const char *s, char c);
 // static int	count_words(const char *s, char c);
+int			count_words(char *s);
+
+char		**ft_split_ws(char *ag);
+//int			check(int argc, char **argv);
+t_list		*av_to_lst(char **av);
+void		free_split(char **split);
 
 //********	utils - atoi	********//
 
 long int	ft_atoi_checked(const char *str);
 int			ft_atoi(const char *str);
 int			ft_is_char_nbr(char *str);
-int			ft_isnbr(int ac, char **av);
+int			ft_isnbr(char *str);
 
 //********	utils - list	********//
 
-t_list		*str_to_lst(int argc, char **argv);
+//t_list		*str_to_lst(t_list **lst, char *str);
+
+int		str_to_lst(t_list **lst, char *str);
 t_list		*new_list(int value);
 void		print_list(t_list *begin_list);
 void		free_list(t_list *lst);
+
+
+//********	main	********//
+
+void		error_exit();
+int			main(int argc, char **argv);
+
+
 
 #endif

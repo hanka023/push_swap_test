@@ -6,52 +6,70 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/05 19:28:33 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:44:14 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check(int argc, char **argv)
-{
-	int	fault;
 
-	fault = 0;
-	if (argc < 3)
+
+t_list	*av_to_lst(char **av)
+{
+	int i;
+	int j;
+	char **split;
+	t_list *lst = NULL;
+
+	i = 1;
+	while (av[i])
 	{
-		write(2, "Error\n", 6);
-		return (0);
+		split = ft_split_ws(av[i]);
+		if(!split)
+			return(0);
+		j = 0;
+		if (!ft_isnbr(*split))
+		{
+			free_split(split);
+			return (0);	
+		}
+		while (split[j])
+		{
+			if (!str_to_lst(&lst, split[j]))
+			{
+				free_split(split);
+      			free_list(lst); 
+				return (0); 
+			}
+			j++;
+		}
+		if (!check_duplicates_lst(lst))
+		{
+			free_list(lst);
+			return (0);
+		}
+		free_split(split);
+		i++;
 	}
-	if (!ft_isnbr(argc, argv))
-		fault = 1;
-	if (!check_duplicates(argc, argv))
-		fault = 1;
-	if (fault == 1)
-		return (0);
-	return (1);
+	return(lst);
 }
 
 int	main(int argc, char **argv)
 {
 	int		count;
 	t_list	*lst;
-	t_list	*lst1;
-	t_list	*b;
 
+	(void)argc;
 	lst = NULL;
-	lst1 = NULL;
-	b = NULL;
-	if (!check(argc, argv))
-		return (0);
-	lst = str_to_lst(argc, argv);
+	
+	lst = av_to_lst(argv);
 	if (!lst)
 		return (0);
-	if (!check_duplicates_lst(lst))
-		return (0);
-	lst1 = lst;
-	get_index(lst1);
+	get_index(lst);
 	count = count_index(lst);
-	sort(&lst1, &b, count);
-	free_list(lst1);
+	sort(&lst, count);
+	//print_list(lst);
+	free_list(lst);
 	return (0);
 }
+// ARG=$(python3 -c "import random; print(' '.join(map(str, random.sample(range(-300, 300), 500))))")

@@ -1,5 +1,8 @@
 
-Introduction
+This project has been created as partof the 42 curriculum by haskalov (Hana Skalova)
+
+Description
+
 
 This project is about sorting elements in linked-list stack.
 
@@ -33,6 +36,10 @@ pa
 pa
 
 
+
+Instructions
+
+
 Compilation
 
 Compile program use make (or make re)
@@ -45,5 +52,49 @@ Sorting of a Small Stack
 Sorting of a Large Stack
 
 more numbers are sorted by radix sort
+
+
+use: 
+
+./push_swap 5 8 3 6 4
+./push_swap "5 8 3 6 4"
+./push_swap "222" 1 3 5 "6 7"
+
+
+function should write "Error" if there is:
+
+- some not-number character   (example: ./push_swap 5 8 aaa)
+- duplicated number (example: ./push_swap 2 2  ./push_swap 1 001)
+- longer number than int (example: ./push_swap -2147483649)
+- non-integer number (example: ./push_swap 2.222222)
+-  > 1 sign / sign between numbers (example: ./push_swap ++5 ./push_swap 2-2)
+- empty arg / arg with only space/nl/tab (example: ./push_swap ""   ./push_swap " ")
+
+
+if there are no operations needed, function write nothing.
+
+example: 
+
+./push_swap 1 
+./push_swap 1 2
+./push_swap 1 2 3 4 5 6
+
+
+
+Resources
+
+
+push_swap tutorial https://www.youtube.com/watch?v=OaG81sDEpVk
+
+AI - chatgpt used as an advisor for helping find segfaults and checking errors
+
+
+testers 
+
+
+push_swap tester used for basic check https://github.com/gemartin99/Push-Swap-Tester 
+	
+valgrind checker used for checking memory leaks https://valgrind.org/
+
 
 

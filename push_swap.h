@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/10 14:35:14 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/10 16:41:43 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ void		free_list(t_list *lst);
 //********	utils - list_2	********//
 
 int			is_sorted(t_list *lst);
-int			split_to_lst(t_list **lst, char *jeden_split, char **split);
+int			ft_isspace(char c);
+int			zero_check(char **av);
+int			check_split_to_lst(t_list **lst, char *jeden_split, char **split);
 t_list		*av_to_lst(char **av);
 
 //********	main	********//

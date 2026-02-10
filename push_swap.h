@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/09 20:15:39 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:35:14 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		free_split(char **split);
 int			copy_word(char **result, int i, const char *s);
 char		**ft_split_ws(char *ag);
 
-//********	utils - list	********//
+//********	utils - list_1	********//
 
 int			str_to_lst(t_list **lst, char *str);
 t_list		*new_list(int value);
@@ -83,10 +83,14 @@ void		add_back(t_list **head, t_list *new);
 void		print_list(t_list *begin_list);
 void		free_list(t_list *lst);
 
-//********	main	********//
+//********	utils - list_2	********//
 
+int			is_sorted(t_list *lst);
 int			split_to_lst(t_list **lst, char *jeden_split, char **split);
 t_list		*av_to_lst(char **av);
+
+//********	main	********//
+
 int			main(int argc, char **argv);
 
 #endif

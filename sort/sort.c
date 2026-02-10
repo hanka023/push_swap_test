@@ -6,7 +6,7 @@
 /*   By: haskalov <haskalov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:37:42 by haskalov          #+#    #+#             */
-/*   Updated: 2026/02/09 19:54:14 by haskalov         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:20:18 by haskalov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	sort(t_list **a, int size)
 	t_list	*b;
 
 	b = NULL;
+	if (is_sorted(*a))
+		return ;
 	if (!a || !*a || size <= 1)
 		return ;
 	get_index(*a);

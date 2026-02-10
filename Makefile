@@ -17,14 +17,14 @@ SRCS =	main.c \
 		operations/switch_push.c \
 		sort/radix_sort.c \
 		sort/tiny_sort.c \
-		sort/mini_sort.c \
 		sort/sort.c \
 		utils/ft_isnbr.c \
 		utils/ft_atoi_checked.c \
 		utils/check_duplicates.c \
-		utils/list.c \
+		utils/list_1.c \
+		utils/list_2.c \
 		utils/ft_split.c \
-
+	
 # Objektové soubory
 OBJS = $(SRCS:%.c=%.o)
 

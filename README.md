@@ -3,10 +3,11 @@ Introduction
 
 This project is about sorting elements in linked-list stack.
 
-you can use these operations:
 
-sa : swap a - Swap the first 2 elements at the top of stack A. Do nothing if there is only one or no elements).
-sb : swap b - Swap the first 2 elements at the top of stack B. Do nothing if there is only one or no elements).
+you can sort elements by these operations:
+
+sa : swap a - Swap the first 2 elements at the top of stack A. Do nothing if there is only one or no elements.
+sb : swap b - Swap the first 2 elements at the top of stack B. Do nothing if there is only one or no elements.
 ss : sa and sb at the same time.
 pa : push a - take the first element at the top of b and put it at the top of a. Do nothing if B is empty.
 pb : push b - take the first element at the top of a and put it at the top of b. Do nothing if A is empty.
@@ -20,6 +21,7 @@ rrr : rra and rrb at the same time.
 example: 
 
 ./push_swap 5 8 3 6 4
+
 ra
 sa
 pb
@@ -43,3 +45,5 @@ Sorting of a Small Stack
 Sorting of a Large Stack
 
 more numbers are sorted by radix sort
+
+
